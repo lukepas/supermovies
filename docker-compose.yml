@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:14.5
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_PASSWORD: supermovies
+      POSTGRES_DB: supermovies
+      POSTGRES_USER: supermovies
+    volumes:
+      - "./:/var/www"
+    networks:
+      - supermovies
+
+  api:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      target: development
+    depends_on:
+      - postgres
+    environment:
+      NODE_ENV: development
+    ports:
+      - "3001:3001"
+    volumes:
+      - "./:/supermovies/src/app"
+    command:
+      - /bin/bash
+      - -c
+      - |
+        npm install --legacy-peer-deps
+        npm run start:dev
+    networks:
+      - supermovies
+
+networks:
+  supermovies:
+    name: supermovies_network

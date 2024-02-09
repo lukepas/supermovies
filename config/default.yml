@@ -1,0 +1,19 @@
+server:
+  port: 3001
+  serverEnvironment: development
+
+db:
+  type: 'postgres'
+  port: 5432
+  database: 'supermovies'
+  host: 'postgres'
+  username: 'supermovies'
+  password: 'supermovies'
+  synchronize: false
+
+jwt:
+  expiresIn: 3600
+  secret: 'topSecret1337'
+
+settings:
+  path: 'http://localhost:3000/'
