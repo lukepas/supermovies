@@ -55,15 +55,15 @@ export class AuthService {
     );
 
     if (!user || !user.password) {
-      throw new ForbiddenException('VALIDATION.INVALID_CREDENTIALS');
+      throw new ForbiddenException('Invalid credentials');
     }
 
     if (user.registrationToken) {
-      throw new ForbiddenException('VALIDATION.NOT_CONFIRMED');
+      throw new ForbiddenException('Not confirmed');
     }
 
     if (user && !(await user.validatePassword(loginAuthDto.password))) {
-      throw new ForbiddenException('VALIDATION.INVALID_CREDENTIALS');
+      throw new ForbiddenException('Invalid exepction');
     }
 
     return this.generateJwtToken(user);
@@ -136,7 +136,6 @@ export class AuthService {
 
     user.registrationToken = null;
     await transactionalEntityManager.save(user);
-
 
     return this.generateJwtToken(user);
   }

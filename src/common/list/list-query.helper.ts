@@ -26,7 +26,7 @@ export const getFilteredPaginatedList = async <T>(
 
   if (sortBy && sortDirection) {
     if (!sortableFields.find((sortableField) => sortableField === sortBy)) {
-      throw new BadRequestException('VALIDATION.SORT_BY_NOT_ALLOWED');
+      throw new BadRequestException('Sort by not allowed');
     }
 
     query.addOrderBy(`${sortBy}`, sortDirection);

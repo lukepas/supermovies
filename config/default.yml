@@ -4,9 +4,9 @@ server:
 
 db:
   type: 'postgres'
-  port: 5432
+  port: 5433
   database: 'supermovies'
-  host: 'postgres'
+  host: 'localhost'
   username: 'supermovies'
   password: 'supermovies'
   synchronize: false

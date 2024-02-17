@@ -11,6 +11,8 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import { EjsAdapter } from '@nestjs-modules/mailer/dist/adapters/ejs.adapter';
 import * as path from 'path';
 import { EmailModule } from './email/email.module';
+import { MovieModule } from './movie/movie.module';
+import { MovieCategory } from './movie-category/movie-category.entity';
 
 @Module({
   imports: [
@@ -20,6 +22,8 @@ import { EmailModule } from './email/email.module';
     AuthModule,
     ProfileModule,
     EmailModule,
+    MovieModule,
+    MovieCategory,
     MailerModule.forRoot({
       transport: `smtp://${process.env.SMTP_USERNAME}:${process.env.SMTP_PASSWORD}@${process.env.SMTP_URL}`,
       defaults: {

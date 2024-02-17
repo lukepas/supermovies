@@ -7,9 +7,7 @@ const settings = config.get('settings');
 
 @Injectable()
 export class EmailService {
-  constructor(
-    private readonly mailerService: MailerService,
-  ) {}
+  constructor(private readonly mailerService: MailerService) {}
 
   async sendEmail(model: SendEmailDto): Promise<void> {
     const { subject, template, context, to } = model;
@@ -24,14 +22,8 @@ export class EmailService {
       template: template,
       context: {
         path: process.env.ASSETS_PATH || settings.path,
-        helloMessage: translateOrReturnAlias(
-          translationsList,
-          'EMAIL.HELLO_MESSAGE',
-        ),
-        goToMessage: translateOrReturnAlias(
-          translationsList,
-          'EMAIL.GO_TO_MESSAGE',
-        ),
+        helloMessage: 'EMAIL.GO_TO_MESSAGE',
+        goToMessage: 'EMAIL.GO_TO_MESSAGE',
       },
     });
   }
