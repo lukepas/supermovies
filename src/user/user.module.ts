@@ -6,6 +6,7 @@ import { UserController } from './user.controller';
 import { AuthModule } from '../auth/auth.module';
 import { ProfileService } from '../profile/profile.service';
 import { ProfileRepository } from '../profile/profile.repository';
+import { HashService } from '../auth/auth.utils';
 
 @Module({
   imports: [
@@ -13,7 +14,7 @@ import { ProfileRepository } from '../profile/profile.repository';
     AuthModule,
   ],
   controllers: [UserController],
-  providers: [UserService, ProfileService],
+  providers: [UserService, ProfileService, HashService],
   exports: [],
 })
 export class UserModule {}

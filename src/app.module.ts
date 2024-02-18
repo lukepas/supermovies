@@ -12,7 +12,7 @@ import { EjsAdapter } from '@nestjs-modules/mailer/dist/adapters/ejs.adapter';
 import * as path from 'path';
 import { EmailModule } from './email/email.module';
 import { MovieModule } from './movie/movie.module';
-import { MovieCategory } from './movie-category/movie-category.entity';
+import { MovieCategoryModule } from './movie-category/movie-category.module';
 
 @Module({
   imports: [
@@ -23,7 +23,7 @@ import { MovieCategory } from './movie-category/movie-category.entity';
     ProfileModule,
     EmailModule,
     MovieModule,
-    MovieCategory,
+    MovieCategoryModule,
     MailerModule.forRoot({
       transport: `smtp://${process.env.SMTP_USERNAME}:${process.env.SMTP_PASSWORD}@${process.env.SMTP_URL}`,
       defaults: {

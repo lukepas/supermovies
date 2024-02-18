@@ -1,6 +1,5 @@
 import {
   BadRequestException,
-  ConflictException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
@@ -58,7 +57,7 @@ export class MovieCategoryService {
   ): Promise<MovieCategory> {
     const { name } = updateMovieCategoryDto;
 
-    const movieCategory = await this.getMovieCategoryByName(name);
+    const movieCategory = await this.getMovieCategoryById(id);
 
     if (!movieCategory) {
       throw new NotFoundException('Movie category not found');

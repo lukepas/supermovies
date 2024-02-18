@@ -24,7 +24,6 @@ import { RegisterDto } from './dto/register.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
 import { ConfirmationCodeValidationDto } from './dto/confirmation-code-validation.dto';
 import { RemindPasswordDto } from './dto/password-remind.dto';
-import { ProfileRepository } from '../profile/profile.repository';
 import { HashService } from './auth.utils';
 
 const settings = config.get('settings');
@@ -36,9 +35,6 @@ export class AuthService {
   constructor(
     @InjectRepository(UserRepository)
     private userRepository: UserRepository,
-
-    @InjectRepository(ProfileRepository)
-    private profileRepository: ProfileRepository,
 
     private emailService: EmailService,
 
